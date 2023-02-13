@@ -11,8 +11,8 @@ const app = express();
 
 const config = configs[app.get('env')];
 
-const speakers = new Speakers(config);
-const feedback = new Feedback(config);
+const speakers = new Speakers(config.data.speakers);
+const feedback = new Feedback(config.data.feedback);
 
 app.set('view engine', 'pug');
 if (app.get('env') === 'development') {
@@ -47,7 +47,6 @@ app.use((req, res, next) => next(createError(404, 'File not found')));
 
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
-  console.log('Érror', err)
   res.locals.message = err.message;
   const status = err.status || 500;
   res.locals.status = status;

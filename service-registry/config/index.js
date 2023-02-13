@@ -19,7 +19,7 @@ module.exports = {
   production: {
     name,
     version,
-    sericeTimeout: 30,
+    serviceTimeout: 30,
     log: () => getLogger(name, version, 'info'),
   },
   test: {
